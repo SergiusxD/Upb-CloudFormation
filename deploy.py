@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #!/usr/bin/python3
 import getopt, sys
 
@@ -17,11 +18,17 @@ except getopt.error as err:
 import boto3
 PROJECT = "upb-cloudformation2"
 BUCKET_NAME = f"{PROJECT}-bucketbatachi-123"
+=======
+import boto3
+
+PROJECT = "Upb-CloudFormation"
+>>>>>>> 7a44a0f79ce8bbd27f259c174a35e50b142a3679
 
 cf = boto3.client('cloudformation')
 
 with open('template.yaml', 'r') as file:
     template = file.read()
+<<<<<<< HEAD
     
 if command in("--create","--c"):
     response = cf.create_stack(
@@ -49,3 +56,13 @@ if command in("--delete","-d"):
     print(response)
     
 print("done!")
+=======
+
+response = cf.create_stack(
+    StackName=PROJECT,
+    TemplateBody= template
+)
+
+print(response)
+
+>>>>>>> 7a44a0f79ce8bbd27f259c174a35e50b142a3679
