@@ -1,5 +1,5 @@
-#import os
+import os
 
 def handler(event, context):
-    #USER = os.getenv('MY_NAME')
-    return "lambada1"
+    USER = os.getenv('MY_NAME')
+    return USER
