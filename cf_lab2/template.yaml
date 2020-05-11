@@ -2,13 +2,13 @@ AWSTemplateFormatVersion : '2010-09-09'
 Transform:
   - AWS::Serverless-2016-10-31
   
-Parameters:
-    BuketName:
-     Type: String
+#Parameters:
+#  BuketName:
+#    Type: String
 
 Description: my template
 Resources:
- MyLambdaRole:
+  MyLambdaRole:
     Type: AWS::IAM::Role
     Properties:
       RoleName: rpp-ip-cluster-lambda-role
@@ -42,7 +42,10 @@ Resources:
       CodeUri: ./build
       Handler: lambda1.handler
       Role: !GetAtt MyLambdaRole.Arn
-      
+    #  Environment:
+    #      Variables:
+      #         MY_NAME : sergio
+
   MyLambda2:
     Type: AWS::Serverless::Function
     Properties:
@@ -50,9 +53,8 @@ Resources:
       Runtime: python3.6
       CodeUri: ./build
       Handler: lambda2.handler
-      Role: !GetAtt MyLambdaRole.Arn   
-    
-            
-Outputs:
-    RoleARN:
-        Value: !Ref MyBucket
+      Role: !GetAtt MyLambdaRole.Arn
+
+Outputs: 
+  RoleARN:
+    Value: !GetAtt MyLambdaRole.Arn 
